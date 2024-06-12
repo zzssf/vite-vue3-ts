@@ -9,12 +9,11 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-    // "@vue/typescript/recommended",
-    // "@vue/prettier",
-    // "@vue/eslint-config-typescript"
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
-  plugins: ["vue", "@typescript-eslint", "prettier"],
+  plugins: ["vue", "@typescript-eslint", "prettier", "import"],
   parser: "vue-eslint-parser",
   parserOptions: {
     parser: "@typescript-eslint/parser",
@@ -64,6 +63,38 @@ module.exports = {
         },
         svg: "always",
         math: "always"
+      }
+    ],
+    // 配置import模块进行分组
+    "import/no-unresolved": [2, { commonjs: true, amd: true }],
+    "import/no-named-as-default-member": 0,
+    "import/order": [
+      "error",
+      {
+        groups: [["builtin", "external"], "internal", "parent", "sibling", "index"],
+        "newlines-between": "never",
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true
+        },
+        pathGroups: [
+          {
+            pattern: "{vue,vue-router,vuex}",
+            group: "builtin",
+            position: "before"
+          },
+          {
+            pattern: "@/**",
+            group: "internal",
+            position: "before"
+          },
+          {
+            pattern: "*.vue",
+            group: "internal",
+            position: "before"
+          }
+        ],
+        pathGroupsExcludedImportTypes: ["builtin"]
       }
     ],
     // Prettier
