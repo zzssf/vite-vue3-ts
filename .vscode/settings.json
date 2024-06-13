@@ -1,6 +1,6 @@
 {
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
-  "stylelint.validate": ["css", "scss", "less"],
+  "stylelint.validate": ["css", "scss", "less", "postcss"],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
