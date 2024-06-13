@@ -1,6 +1,6 @@
 {
   "recommendations": [
-    "editorconfig.editorconfig",
+    "EditorConfig.EditorConfig",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "Vue.volar",
