@@ -53,6 +53,7 @@
     "vue-tsc": "2.0.7"
   },
   "lint-staged": {
-    "**/*.{vue,js,jsx,ts,tsx}": "npm run lint"
+    "**/*.{vue,js,jsx,ts,tsx}": "pnpm run lint",
+    "**/*.{vue,html,css,scss,less}": "pnpm run lint:style:fix"
   }
 }
