@@ -1,11 +1,14 @@
 import vue from "@vitejs/plugin-vue"
 import { resolve } from "path"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
+import { viteMockServe } from "vite-plugin-mock"
 import stylelintPlugin from "vite-plugin-stylelint"
 
-export default ({ mode }: ConfigEnv): UserConfigExport => {
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   const viteEnv = loadEnv(mode, process.cwd()) as ImportMetaEnv
   const { VITE_PUBLIC_PATH } = viteEnv
+  const prodMock = true
+
   return {
     /** 打包时根据实际情况修改 base */
     base: VITE_PUBLIC_PATH,
@@ -78,6 +81,17 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
       vue(),
       stylelintPlugin({
         include: ["src/**/*.{vue,css,scss,less}"]
+      }),
+      viteMockServe({
+        ignore: /^_/,
+        mockPath: "./mock/",
+        supportTs: true,
+        watchFiles: true,
+        localEnabled: command === "serve",
+        prodEnabled: command !== "serve" && prodMock,
+        logger: false,
+        injectCode: `import { setupProdMockServer } from '../mock/_createProductionServer.js';
+        setupProdMockServer();`
       })
     ]
   }
