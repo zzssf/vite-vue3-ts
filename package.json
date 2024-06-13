@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview",
+    "build:stage": "vue-tsc --noEmit && vite build --mode staging",
+    "build:prod": "vue-tsc --noEmit && vite build",
+    "preview:stage": "pnpm build:stage && vite preview",
+    "preview:prod": "pnpm build:prod && vite preview",
     "lint:eslint": "eslint --cache --max-warnings 0 \"src/**/*.{vue,js,jsx,ts,tsx,json,html,md}\" --fix",
     "lint:prettier": "prettier --write \"src/**/*.{vue,js,jsx,ts,tsx,json,html,md}\"",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
@@ -16,6 +18,7 @@
     "commitlint": "commitlint --config commitlint.config.cjs -e -V"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "2.3.1",
     "axios": "1.6.8",
     "element-plus": "2.6.2",
     "lodash-es": "4.17.21",
