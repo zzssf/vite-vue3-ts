@@ -1,13 +1,21 @@
 {
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "vue"],
+  "stylelint.validate": ["css", "scss", "less"],
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.fixAll.stylelint": "explicit"
   },
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
@@ -23,11 +31,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[scss]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "stylelint.validate": ["css", "scss"],
-  "editor.formatOnSave": true
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
