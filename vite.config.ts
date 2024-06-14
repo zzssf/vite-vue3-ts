@@ -93,6 +93,18 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         injectCode: `import { setupProdMockServer } from '../mock/_createProductionServer.js';
         setupProdMockServer();`
       })
-    ]
+    ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          // 这里可以放置全局的 less 变量、mixin 等
+          additionalData: `@import "@/styles/variables.less";`
+        },
+        scss: {
+          // 这里可以放置全局的 scss 变量、mixin 等
+          additionalData: `@import "@/styles/variables.scss";`
+        }
+      }
+    }
   }
 }
