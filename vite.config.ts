@@ -2,6 +2,13 @@ import vue from "@vitejs/plugin-vue"
 import { resolve } from "path"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import { viteMockServe } from "vite-plugin-mock"
+import {
+  createStyleImportPlugin,
+  AndDesignVueResolve,
+  VantResolve,
+  ElementPlusResolve,
+  AntdResolve
+} from "vite-plugin-style-import"
 import stylelintPlugin from "vite-plugin-stylelint"
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -92,6 +99,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         logger: false,
         injectCode: `import { setupProdMockServer } from '../mock/_createProductionServer.js';
         setupProdMockServer();`
+      }),
+      createStyleImportPlugin({
+        resolves: [AndDesignVueResolve(), VantResolve(), ElementPlusResolve(), AntdResolve()]
       })
     ],
     css: {
