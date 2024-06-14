@@ -4,12 +4,13 @@ import AutoImport from "unplugin-auto-import/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import Components from "unplugin-vue-components/vite"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
+import envCompatible from "vite-plugin-env-compatible"
 import { viteMockServe } from "vite-plugin-mock"
 import { createStyleImportPlugin, ElementPlusResolve } from "vite-plugin-style-import"
 import stylelintPlugin from "vite-plugin-stylelint"
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
-  const viteEnv = loadEnv(mode, process.cwd()) as ImportMetaEnv
+  const viteEnv = loadEnv(mode, process.cwd(), "") as ImportMetaEnv
   const { VITE_PUBLIC_PATH } = viteEnv
   const prodMock = true
 
@@ -82,13 +83,14 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     },
     /** Vite 插件 */
     plugins: [
+      envCompatible({ prefix: "VITE_" }), // 兼容process.env获取环境变量
       vue(),
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],
         resolvers: [ElementPlusResolver()],
         dts: resolve(__dirname, "types/auto-imports.d.ts"), //生成的类型声明文件,
         eslintrc: {
-          enabled: true,
+          enabled: false,
           filepath: "./.eslintrc-auto-import.json",
           globalsPropValue: true
         }
