@@ -2,13 +2,7 @@ import vue from "@vitejs/plugin-vue"
 import { resolve } from "path"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import { viteMockServe } from "vite-plugin-mock"
-import {
-  createStyleImportPlugin,
-  AndDesignVueResolve,
-  VantResolve,
-  ElementPlusResolve,
-  AntdResolve
-} from "vite-plugin-style-import"
+import { createStyleImportPlugin, ElementPlusResolve } from "vite-plugin-style-import"
 import stylelintPlugin from "vite-plugin-stylelint"
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
@@ -101,18 +95,20 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
         setupProdMockServer();`
       }),
       createStyleImportPlugin({
-        resolves: [AndDesignVueResolve(), VantResolve(), ElementPlusResolve(), AntdResolve()]
+        resolves: [ElementPlusResolve()]
       })
     ],
     css: {
       preprocessorOptions: {
         less: {
           // 这里可以放置全局的 less 变量、mixin 等
-          additionalData: `@import "@/styles/variables.less";`
+          additionalData: `@import "@/styles/variables.less";`,
+          javascriptEnabled: true
         },
         scss: {
           // 这里可以放置全局的 scss 变量、mixin 等
-          additionalData: `@import "@/styles/variables.scss";`
+          additionalData: `@import "@/styles/variables.scss";`,
+          javascriptEnabled: true
         }
       }
     }
