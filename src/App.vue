@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue"
+import styles from "./index.module.scss"
 </script>
 
 <template>
-  <div>
+  <div :class="styles.container">
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
     </a>
@@ -14,7 +15,11 @@ import HelloWorld from "./components/HelloWorld.vue"
   <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.bg {
+  background-color: $lessBg;
+}
+
 .logo {
   will-change: filter;
   padding: 1.5em;
