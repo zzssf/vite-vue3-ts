@@ -51,6 +51,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: 5.0.4
         version: 5.0.4(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))(vue@3.4.27(typescript@5.4.3))
+      amfe-flexible:
+        specifier: ^2.2.1
+        version: 2.2.1
       consola:
         specifier: ^3.2.3
         version: 3.2.3
@@ -84,12 +87,18 @@ importers:
       mockjs:
         specifier: 1.1.0
         version: 1.1.0
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.38
       postcss-html:
         specifier: ^1.7.0
         version: 1.7.0
       postcss-less:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.4.38)
+      postcss-pxtorem:
+        specifier: ^6.1.0
+        version: 6.1.0(postcss@8.4.38)
       postcss-scss:
         specifier: ^4.0.9
         version: 4.0.9(postcss@8.4.38)
@@ -126,6 +135,9 @@ importers:
       vite:
         specifier: 5.2.6
         version: 5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5)
+      vite-plugin-env-compatible:
+        specifier: ^2.0.1
+        version: 2.0.1
       vite-plugin-mock:
         specifier: 2.9.6
         version: 2.9.6(mockjs@1.1.0)(rollup@4.18.0)(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))
@@ -770,6 +782,9 @@ packages:
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
 
+  amfe-flexible@2.2.1:
+    resolution: {integrity: sha512-L2VfvDzoETBjhRptg5u/IUuzHSuxm22JpSRb404p/TBGeRfwWmmNEbB+TFPIP/sS/+pbM18bCFH9QnMojLuPNw==}
+
   ansi-escapes@6.2.1:
     resolution: {integrity: sha512-4nJ3yixlEthEJ9Rk4vPcdBRkZvQZlYyu8j4/Mqz5sgIkddmEnH2Yj2ZrnP9S3tQOvSNRUIgVNF/1yPpRAGNRig==}
     engines: {node: '>=14.16'}
@@ -1119,6 +1134,13 @@ packages:
 
   dot-prop@5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
+    engines: {node: '>=8'}
+
+  dotenv-expand@5.1.0:
+    resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
+
+  dotenv@8.2.0:
+    resolution: {integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==}
     engines: {node: '>=8'}
 
   ee-first@1.1.1:
@@ -2151,6 +2173,11 @@ packages:
     peerDependencies:
       postcss: ^8.3.5
 
+  postcss-pxtorem@6.1.0:
+    resolution: {integrity: sha512-ROODSNci9ADal3zUcPHOF/K83TiCgNSPXQFSbwyPHNV8ioHIE4SaC+FPOufd8jsr5jV2uIz29v1Uqy1c4ov42g==}
+    peerDependencies:
+      postcss: ^8.0.0
+
   postcss-resolve-nested-selector@0.1.1:
     resolution: {integrity: sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==}
 
@@ -2624,6 +2651,9 @@ packages:
   utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
+
+  vite-plugin-env-compatible@2.0.1:
+    resolution: {integrity: sha512-DRrOZTg/W44ojVQQfGSMPEgYQGzp5TeIpt9cpaK35hTOC/b2D7Ffl8/RIgK8vQ0mlnDIUgETcA173bnMEkyzdw==}
 
   vite-plugin-mock@2.9.6:
     resolution: {integrity: sha512-/Rm59oPppe/ncbkSrUuAxIQihlI2YcBmnbR4ST1RA2VzM1C0tEQc1KlbQvnUGhXECAGTaQN2JyasiwXP6EtKgg==}
@@ -3416,6 +3446,8 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
+  amfe-flexible@2.2.1: {}
+
   ansi-escapes@6.2.1: {}
 
   ansi-regex@5.0.1: {}
@@ -3795,6 +3827,10 @@ snapshots:
   dot-prop@5.3.0:
     dependencies:
       is-obj: 2.0.0
+
+  dotenv-expand@5.1.0: {}
+
+  dotenv@8.2.0: {}
 
   ee-first@1.1.1: {}
 
@@ -4911,6 +4947,10 @@ snapshots:
     dependencies:
       postcss: 8.4.38
 
+  postcss-pxtorem@6.1.0(postcss@8.4.38):
+    dependencies:
+      postcss: 8.4.38
+
   postcss-resolve-nested-selector@0.1.1: {}
 
   postcss-safe-parser@6.0.0(postcss@8.4.38):
@@ -5461,6 +5501,11 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   utils-merge@1.0.1: {}
+
+  vite-plugin-env-compatible@2.0.1:
+    dependencies:
+      dotenv: 8.2.0
+      dotenv-expand: 5.1.0
 
   vite-plugin-mock@2.9.6(mockjs@1.1.0)(rollup@4.18.0)(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5)):
     dependencies:
