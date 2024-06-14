@@ -1,5 +1,8 @@
 import vue from "@vitejs/plugin-vue"
 import { resolve } from "path"
+import AutoImport from "unplugin-auto-import/vite"
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+import Components from "unplugin-vue-components/vite"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import { viteMockServe } from "vite-plugin-mock"
 import { createStyleImportPlugin, ElementPlusResolve } from "vite-plugin-style-import"
@@ -80,6 +83,20 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     /** Vite 插件 */
     plugins: [
       vue(),
+      AutoImport({
+        imports: ["vue", "vue-router", "pinia"],
+        resolvers: [ElementPlusResolver()],
+        dts: resolve(__dirname, "types/auto-imports.d.ts"), //生成的类型声明文件,
+        eslintrc: {
+          enabled: true,
+          filepath: "./.eslintrc-auto-import.json",
+          globalsPropValue: true
+        }
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+        dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
+      }),
       stylelintPlugin({
         include: ["src/**/*.{vue,css,scss,less}"]
       }),

@@ -11,7 +11,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "./.eslintrc-auto-import.json"
   ],
   plugins: ["vue", "@typescript-eslint", "prettier", "import"],
   parser: "vue-eslint-parser",
@@ -104,5 +105,22 @@ module.exports = {
         endOfLine: "auto"
       }
     ]
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project: "tsconfig.json"
+      },
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".d.ts", ".tsx"],
+        paths: ["src"]
+      }
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".d.ts", ".tsx"]
+    },
+    vue: {
+      version: "detect"
+    }
   }
 }
