@@ -15,6 +15,49 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   const { VITE_PUBLIC_PATH } = viteEnv
   const prodMock = true
 
+  const plugins = [
+    envCompatible({ prefix: "VITE_" }), // 兼容process.env获取环境变量
+    vue(),
+    stylelintPlugin({
+      include: ["src/**/*.{vue,css,scss,less}"]
+    }),
+    viteMockServe({
+      ignore: /^_/,
+      mockPath: "./mock/",
+      supportTs: true,
+      watchFiles: true,
+      localEnabled: command === "serve",
+      prodEnabled: command !== "serve" && prodMock,
+      logger: false,
+      injectCode: `import { setupProdMockServer } from '../mock/_createProductionServer.js';
+      setupProdMockServer();`
+    }),
+    createStyleImportPlugin({
+      resolves: [ElementPlusResolve()]
+    }),
+    visualizer({
+      gzipSize: true,
+      brotliSize: true,
+      emitFile: false,
+      filename: "test.html", //分析图生成的文件名
+      open: true //如果存在本地服务端口，将在打包后自动展示
+    })
+  ]
+
+  if (mode === "production") {
+    plugins.push(
+      AutoImport({
+        imports: ["vue", "vue-router", "pinia"],
+        resolvers: [ElementPlusResolver()],
+        dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+        dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
+      })
+    )
+  }
+
   return {
     /** 打包时根据实际情况修改 base */
     base: VITE_PUBLIC_PATH,
@@ -83,43 +126,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       }
     },
     /** Vite 插件 */
-    plugins: [
-      envCompatible({ prefix: "VITE_" }), // 兼容process.env获取环境变量
-      vue(),
-      AutoImport({
-        imports: ["vue", "vue-router", "pinia"],
-        resolvers: [ElementPlusResolver()],
-        dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()],
-        dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
-      }),
-      stylelintPlugin({
-        include: ["src/**/*.{vue,css,scss,less}"]
-      }),
-      viteMockServe({
-        ignore: /^_/,
-        mockPath: "./mock/",
-        supportTs: true,
-        watchFiles: true,
-        localEnabled: command === "serve",
-        prodEnabled: command !== "serve" && prodMock,
-        logger: false,
-        injectCode: `import { setupProdMockServer } from '../mock/_createProductionServer.js';
-        setupProdMockServer();`
-      }),
-      createStyleImportPlugin({
-        resolves: [ElementPlusResolve()]
-      }),
-      visualizer({
-        gzipSize: true,
-        brotliSize: true,
-        emitFile: false,
-        filename: "test.html", //分析图生成的文件名
-        open: true //如果存在本地服务端口，将在打包后自动展示
-      })
-    ],
+    plugins,
     css: {
       preprocessorOptions: {
         less: {
