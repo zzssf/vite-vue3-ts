@@ -1,4 +1,5 @@
 import vue from "@vitejs/plugin-vue"
+import { codeInspectorPlugin } from "code-inspector-plugin"
 import { resolve } from "path"
 import { visualizer } from "rollup-plugin-visualizer"
 import AutoImport from "unplugin-auto-import/vite"
@@ -41,6 +42,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       emitFile: false,
       filename: "test.html", //分析图生成的文件名
       open: true //如果存在本地服务端口，将在打包后自动展示
+    }),
+    codeInspectorPlugin({
+      bundler: "vite"
     })
   ]
 
@@ -119,6 +123,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
           /** 是否允许跨域 */
           changeOrigin: true
         }
+      },
+      hmr: {
+        overlay: false // 禁用 HMR 错误覆盖层
       },
       /** 预热常用文件，提高初始页面加载速度 */
       warmup: {
