@@ -95,15 +95,15 @@ module.exports = {
   overrides: [
     // 针对不同类型文件的特定配置
     {
-      files: ["**/*.vue"], // 对所有的 Vue 文件
+      files: ["**/*.(vue|html)"], // 对所有的 Vue 文件
       customSyntax: "postcss-html" // 使用 postcss-html 解析样式语法
     },
     {
-      files: ["**/*.less"], // 对所有的 Less 文件
+      files: ["**/*.(vue|less)"], // 对所有的 Less 文件
       customSyntax: "postcss-less" // 使用 postcss-less 解析样式语法
     },
     {
-      files: ["**/*.scss"], // 对所有的 SCSS 文件
+      files: ["**/*.(vue|scss)"], // 对所有的 SCSS 文件
       customSyntax: "postcss-scss" // 使用 postcss-scss 解析样式语法
     }
   ]

@@ -20,10 +20,8 @@ module.exports = {
     parser: "@typescript-eslint/parser",
     ecmaVersion: 2020,
     sourceType: "module",
-    jsxPragma: "React",
     ecmaFeatures: {
-      jsx: true,
-      tsx: true
+      jsx: true
     }
   },
   rules: {
@@ -118,9 +116,6 @@ module.exports = {
     },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".d.ts", ".tsx"]
-    },
-    vue: {
-      version: "detect"
     }
   }
 }
