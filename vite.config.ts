@@ -88,12 +88,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       AutoImport({
         imports: ["vue", "vue-router", "pinia"],
         resolvers: [ElementPlusResolver()],
-        dts: resolve(__dirname, "types/auto-imports.d.ts"), //生成的类型声明文件,
-        eslintrc: {
-          enabled: false,
-          filepath: "./.eslintrc-auto-import.json",
-          globalsPropValue: true
-        }
+        dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
       }),
       Components({
         resolvers: [ElementPlusResolver()],
