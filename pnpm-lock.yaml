@@ -34,10 +34,10 @@ importers:
         version: 4.1.6(vue@3.2.45)
     devDependencies:
       '@commitlint/cli':
-        specifier: ^19.3.0
+        specifier: 19.3.0
         version: 19.3.0(@types/node@20.14.2)(typescript@5.4.3)
       '@commitlint/config-conventional':
-        specifier: ^19.2.2
+        specifier: 19.2.2
         version: 19.2.2
       '@types/lodash-es':
         specifier: 4.17.12
@@ -52,10 +52,10 @@ importers:
         specifier: 5.0.4
         version: 5.0.4(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))(vue@3.2.45)
       amfe-flexible:
-        specifier: ^2.2.1
+        specifier: 2.2.1
         version: 2.2.1
       consola:
-        specifier: ^3.2.3
+        specifier: 3.2.3
         version: 3.2.3
       eslint:
         specifier: 8.57.0
@@ -76,79 +76,79 @@ importers:
         specifier: 9.23.0
         version: 9.23.0(eslint@8.57.0)
       husky:
-        specifier: ^8.0.0
-        version: 8.0.3
+        specifier: 8.0.0
+        version: 8.0.0
       less:
-        specifier: ^4.2.0
+        specifier: 4.2.0
         version: 4.2.0
       lint-staged:
-        specifier: ^15.2.6
+        specifier: 15.2.6
         version: 15.2.6
       mockjs:
-        specifier: ^1.1.0
+        specifier: 1.1.0
         version: 1.1.0
       postcss:
-        specifier: ^8.4.38
+        specifier: 8.4.38
         version: 8.4.38
       postcss-html:
-        specifier: ^1.7.0
+        specifier: 1.7.0
         version: 1.7.0
       postcss-less:
-        specifier: ^6.0.0
+        specifier: 6.0.0
         version: 6.0.0(postcss@8.4.38)
       postcss-pxtorem:
-        specifier: ^6.1.0
+        specifier: 6.1.0
         version: 6.1.0(postcss@8.4.38)
       postcss-scss:
-        specifier: ^4.0.9
+        specifier: 4.0.9
         version: 4.0.9(postcss@8.4.38)
       prettier:
         specifier: 3.2.5
         version: 3.2.5
       rollup-plugin-visualizer:
-        specifier: ^5.12.0
+        specifier: 5.12.0
         version: 5.12.0(rollup@4.18.0)
       sass:
-        specifier: ^1.77.5
+        specifier: 1.77.5
         version: 1.77.5
       stylelint:
-        specifier: ^16.6.1
+        specifier: 16.6.1
         version: 16.6.1(typescript@5.4.3)
       stylelint-config-standard:
-        specifier: ^36.0.0
+        specifier: 36.0.0
         version: 36.0.0(stylelint@16.6.1(typescript@5.4.3))
       stylelint-config-standard-vue:
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0(postcss-html@1.7.0)(stylelint@16.6.1(typescript@5.4.3))
       stylelint-order:
-        specifier: ^6.0.4
+        specifier: 6.0.4
         version: 6.0.4(stylelint@16.6.1(typescript@5.4.3))
       typescript:
         specifier: 5.4.3
         version: 5.4.3
       unplugin-auto-import:
-        specifier: ^0.17.6
+        specifier: 0.17.6
         version: 0.17.6(@vueuse/core@9.13.0(vue@3.2.45))(rollup@4.18.0)
       unplugin-element-plus:
-        specifier: ^0.8.0
+        specifier: 0.8.0
         version: 0.8.0(rollup@4.18.0)
       unplugin-vue-components:
-        specifier: ^0.27.0
+        specifier: 0.27.0
         version: 0.27.0(@babel/parser@7.24.7)(rollup@4.18.0)(vue@3.2.45)
       vite:
         specifier: 5.2.6
         version: 5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5)
       vite-plugin-env-compatible:
-        specifier: ^2.0.1
+        specifier: 2.0.1
         version: 2.0.1
       vite-plugin-mock:
         specifier: 2.9.6
         version: 2.9.6(mockjs@1.1.0)(rollup@4.18.0)(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))
       vite-plugin-style-import:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))
       vite-plugin-stylelint:
-        specifier: ^5.3.1
+        specifier: 5.3.1
         version: 5.3.1(postcss@8.4.38)(rollup@4.18.0)(stylelint@16.6.1(typescript@5.4.3))(vite@5.2.6(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))
       vue-eslint-parser:
         specifier: 9.4.2
@@ -1600,8 +1600,8 @@ packages:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
 
-  husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
+  husky@8.0.0:
+    resolution: {integrity: sha512-4qbE/5dzNDNxFEkX9MNRPKl5+omTXQzdILCUWiqG/lWIAioiM5vln265/l6I2Zx8gpW8l1ukZwGQeCFbBZ6+6w==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4474,7 +4474,7 @@ snapshots:
 
   human-signals@5.0.0: {}
 
-  husky@8.0.3: {}
+  husky@8.0.0: {}
 
   iconv-lite@0.6.3:
     dependencies:
