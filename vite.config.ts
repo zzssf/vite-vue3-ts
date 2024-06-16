@@ -1,3 +1,4 @@
+import legacy from "@vitejs/plugin-legacy"
 import vue from "@vitejs/plugin-vue"
 import { codeInspectorPlugin } from "code-inspector-plugin"
 import { resolve } from "path"
@@ -21,6 +22,9 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     vue(),
     stylelintPlugin({
       include: ["src/**/*.{vue,css,scss,less}"]
+    }),
+    legacy({
+      targets: ["> 1%", "last 2 versions", "not dead", "not IE 11"]
     }),
     viteMockServe({
       ignore: /^_/,
