@@ -1,11 +1,12 @@
 import legacy from "@vitejs/plugin-legacy"
 import vue from "@vitejs/plugin-vue"
 import { codeInspectorPlugin } from "code-inspector-plugin"
-import { resolve } from "path"
+import { fileURLToPath, URL } from "node:url"
+// import { resolve } from "path"
 import { visualizer } from "rollup-plugin-visualizer"
-import AutoImport from "unplugin-auto-import/vite"
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
-import Components from "unplugin-vue-components/vite"
+// import AutoImport from "unplugin-auto-import/vite"
+// import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+// import Components from "unplugin-vue-components/vite"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import envCompatible from "vite-plugin-env-compatible"
 import { viteMockServe } from "vite-plugin-mock"
@@ -52,28 +53,28 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     })
   ]
 
-  if (mode === "production") {
-    plugins.push(
-      AutoImport({
-        imports: ["vue", "vue-router", "pinia"],
-        resolvers: [ElementPlusResolver()],
-        dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()],
-        dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
-      })
-    )
-  }
+  // if (mode === "production") {
+  //   plugins.push(
+  //     AutoImport({
+  //       imports: ["vue", "vue-router", "pinia"],
+  //       resolvers: [ElementPlusResolver()],
+  //       dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
+  //     }),
+  //     Components({
+  //       resolvers: [ElementPlusResolver()],
+  //       dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
+  //     })
+  //   )
+  // }
 
   return {
     /** 打包时根据实际情况修改 base */
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
-        /** @ 符号指向 src 目录 */
-        "@": resolve(__dirname, "./src")
-      }
+        "@": fileURLToPath(new URL("./src", import.meta.url))
+      },
+      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
     },
     build: {
       /** 单个 chunk 文件的大小超过 2048KB 时发出警告 */
