@@ -4,7 +4,7 @@
     "target": "esnext", // 设置ECMAScript目标版本为最新版本
     "useDefineForClassFields": true, // 使用Object.defineProperty来定义类字段
     "module": "esnext", // 设置模块化系统为最新的ECMAScript模块化系统
-    "moduleResolution": "bundler", // 设置模块解析策略为打包工具（如Vite）解析
+    "moduleResolution": "node", // 设置模块解析策略为打包工具（如Vite）解析
     "strict": true, // 启用所有TypeScript严格类型检查选项
     "jsx": "preserve", // 设置JSX代码的生成方式为保留JSX代码，不进行编译
     "jsxImportSource": "vue", // 设置JSX工厂函数和碎片导入的来源为Vue
