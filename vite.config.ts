@@ -4,9 +4,9 @@ import { codeInspectorPlugin } from "code-inspector-plugin"
 // import { fileURLToPath, URL } from "node:url"
 import { resolve } from "path"
 import { visualizer } from "rollup-plugin-visualizer"
-// import AutoImport from "unplugin-auto-import/vite"
-// import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
-// import Components from "unplugin-vue-components/vite"
+import AutoImport from "unplugin-auto-import/vite"
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
+import Components from "unplugin-vue-components/vite"
 import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import envCompatible from "vite-plugin-env-compatible"
 import { viteMockServe } from "vite-plugin-mock"
@@ -54,17 +54,17 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   ]
 
   // if (mode === "production") {
-  //   plugins.push(
-  //     AutoImport({
-  //       imports: ["vue", "vue-router", "pinia"],
-  //       resolvers: [ElementPlusResolver()],
-  //       dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
-  //     }),
-  //     Components({
-  //       resolvers: [ElementPlusResolver()],
-  //       dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
-  //     })
-  //   )
+  plugins.push(
+    AutoImport({
+      imports: ["vue", "vue-router", "pinia"],
+      resolvers: [ElementPlusResolver()],
+      dts: resolve(__dirname, "types/auto-imports.d.ts") //生成的类型声明文件,
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+      dts: resolve(__dirname, "types/components.d.ts") // 生成的类型声明文件
+    })
+  )
   // }
 
   return {
