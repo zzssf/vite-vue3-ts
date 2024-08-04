@@ -19,6 +19,7 @@
     "skipLibCheck": true, // 跳过对声明文件的类型检查
     "types": ["vite/client"], // 指定要包含的类型声明文件，包括Vite客户端的类型
     "baseUrl": ".", // baseUrl 用来告诉编译器到哪里去查找模块，使用非相对模块时必须配置此项
+    "noImplicitAny": false,
     "paths": {
       "@/*": ["src/*"] // 非相对模块导入的路径映射配置，根据 baseUrl 配置进行路径计算
     }
