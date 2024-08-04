@@ -1,8 +1,8 @@
 import legacy from "@vitejs/plugin-legacy"
 import vue from "@vitejs/plugin-vue"
 import { codeInspectorPlugin } from "code-inspector-plugin"
-import { fileURLToPath, URL } from "node:url"
-// import { resolve } from "path"
+// import { fileURLToPath, URL } from "node:url"
+import { resolve } from "path"
 import { visualizer } from "rollup-plugin-visualizer"
 // import AutoImport from "unplugin-auto-import/vite"
 // import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
@@ -72,7 +72,8 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     base: VITE_PUBLIC_PATH,
     resolve: {
       alias: {
-        "@": fileURLToPath(new URL("./src", import.meta.url))
+        /** @ 符号指向 src 目录 */
+        "@": resolve(__dirname, "./src")
       },
       extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
     },
